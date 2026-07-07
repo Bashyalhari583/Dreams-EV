@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Body Background: Grid pattern + radial glows (matches original) ──────── */
+html { scroll-behavior: smooth; background: #020304; }
+::selection { background: #19d7ff33; color: #fff; }
+
+body {
+  background:
+    radial-gradient(circle at 16% 6%, rgba(25, 215, 255, .14), transparent 28rem),
+    radial-gradient(circle at 85% 12%, rgba(51, 255, 153, .09), transparent 26rem),
+    radial-gradient(circle at 80% 76%, rgba(255, 36, 79, .12), transparent 28rem),
+    linear-gradient(180deg, #020304, #080b10 42%, #020304);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image: linear-gradient(to bottom, transparent, #000 9%, #000 72%, transparent);
+  z-index: 0;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* ─── Hero Gradient Text ───────────────────────────────────────────────── */
+.hero-gradient-text {
+  background: linear-gradient(100deg, #fff, #d8e0ea, #19d7ff, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Hero Video Effects ───────────────────────────────────────────────── */
+.hero-video {
+  transform: scale(1.05) translate3d(0, 0, 0);
+  filter: blur(1.2px) brightness(0.68) contrast(1.16) saturate(1.12);
+  animation: heroDolly 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroDolly {
+  0% { transform: scale(1.05) translate3d(0, 0, 0); }
+  100% { transform: scale(1.18) translate3d(0, -12px, 0); }
+}
+
+/* ─── Hero Shade Overlay ───────────────────────────────────────────────── */
+.hero-shade {
+  background:
+    radial-gradient(circle at 15% 75%, rgba(25, 215, 255, 0.24), transparent 45rem),
+    radial-gradient(circle at 85% 25%, rgba(255, 140, 0, 0.20), transparent 40rem),
+    linear-gradient(90deg, rgba(2, 3, 4, 0.82) 0%, rgba(2, 3, 4, 0.52) 44%, rgba(2, 3, 4, 0.25) 76%, rgba(2, 3, 4, 0.82)),
+    linear-gradient(180deg, rgba(2, 3, 4, 0.8) 0%, transparent 25%, transparent 75%, rgba(2, 3, 4, 0.96) 100%);
+  animation: brandGlowPulse 14s ease-in-out infinite alternate;
+}
+
+@keyframes brandGlowPulse {
+  0% { opacity: 0.88; }
+  100% { opacity: 1; filter: hue-rotate(6deg) brightness(1.1); }
+}
+
+/* ─── Energy Lines Scan ────────────────────────────────────────────────── */
+.energy-lines {
+  opacity: .35;
+  background: linear-gradient(110deg, transparent 20%, rgba(25, 215, 255, 0.15), transparent 28%, transparent 62%, rgba(255, 36, 79, 0.15), transparent 72%);
+  animation: scan 7s linear infinite;
+}
+
+@keyframes scan {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(110%); }
+}
+
+/* ─── Animations ───────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -16px, 0); }
+}
+
+@keyframes pulse-dot {
+  0%, 80%, 100% { transform: scale(0.4); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.72s cubic-bezier(.2, .72, .18, 1) both;
+}
+
+.animate-drift {
+  animation: drift 5s ease-in-out infinite;
+}
+
+/* ─── Glass Cards (matches original panel styling) ─────────────────────── */
+@layer components {
+  .glass {
+    @apply relative overflow-hidden rounded-lg;
+    border: 1px solid rgba(255, 255, 255, .14);
+    background: linear-gradient(135deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .032));
+    box-shadow: 0 26px 80px rgba(0, 0, 0, .48);
+    backdrop-filter: blur(20px) saturate(130%);
+  }
+  .glass-hover {
+    @apply glass transition-all duration-300;
+  }
+  .glass-hover:hover {
+    transform: translateY(-9px);
+    border-color: rgba(25, 215, 255, .42);
+  }
+
+  /* ─── Buttons matching original pill style ────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center;
+    min-height: 50px;
+    border-radius: 999px;
+    padding: .95rem 1.35rem;
+    background: linear-gradient(135deg, #fff, #d8e0ea);
+    color: #020304;
+    font-size: .78rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    box-shadow: 0 0 40px rgba(25, 215, 255, .22);
+    transition: transform .24s cubic-bezier(.2, .72, .18, 1), box-shadow .24s ease, border-color .24s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, .35), 0 0 34px rgba(25, 215, 255, .18);
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center;
+    min-height: 50px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 999px;
+    padding: .95rem 1.35rem;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(16px);
+    color: #fff;
+    font-size: .78rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: transform .24s cubic-bezier(.2, .72, .18, 1), box-shadow .24s ease, border-color .24s ease;
+  }
+  .btn-ghost:hover {
+    transform: translateY(-4px);
+    border-color: rgba(25, 215, 255, .46);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, .35), 0 0 34px rgba(25, 215, 255, .18);
+  }
+
+  .section-container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+    padding-top: clamp(4.5rem, 8vw, 7rem);
+    padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  }
+
+  .eyebrow {
+    color: #d8e0ea;
+    font-size: .75rem;
+    font-weight: 900;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+}
+
+/* ─── Category card image background ───────────────────────────────────── */
+.category-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.58) saturate(1.16);
+  transition: transform .7s cubic-bezier(.2, .72, .18, 1), filter .3s ease;
+}
+.group:hover .category-card-bg {
+  transform: scale(1.08);
+  filter: brightness(.72) saturate(1.24);
+}
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .9));
+}
+
+/* ─── Stat card glass (hero stats) ──────────────────────────────────── */
+.stat-card {
+  min-height: 94px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .07);
+  backdrop-filter: blur(20px);
+}
+
+/* ─── Featured media float ─────────────────────────────────────────── */
+.featured-media-img {
+  min-height: 480px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, .48);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Feature icon box ─────────────────────────────────────────────── */
+.feature-icon-box {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(25, 215, 255, .22), rgba(25, 215, 255, .06));
+  border: 1px solid rgba(25, 215, 255, .3);
+}
+
+/* ─── Dark band section ────────────────────────────────────────────── */
+.dark-band {
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(0, 0, 0, .22));
+}
+
+/* ─── Section heading (matches original) ───────────────────────────── */
+.section-heading {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 5vw, 4.3rem);
+  line-height: .98;
+  text-transform: uppercase;
+}
