@@ -203,10 +203,10 @@ router.post("/", chatLimiter, async (req, res) => {
           Authorization: `Bearer ${process.env.DEEPINFRA_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "mistralai/Mistral-7B-Instruct-v0.3",
+          model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
           messages,
-          max_tokens: 300,
-          temperature: 0.85,
+          max_tokens: 400,
+          temperature: 0.75,
           top_p: 0.9,
         }),
         signal: AbortSignal.timeout(15000), // 15s timeout
