@@ -235,18 +235,23 @@ router.post("/", chatLimiter, async (req, res) => {
 function fallbackReply(message) {
   const msg = message.toLowerCase();
   if (msg.includes("ev") || msg.includes("electric")) {
-    return "We have 3 EV bikes (Thunder EV, Nova RX, Aero X) and 3 EV scooters (City Spark, Metro Glide, Elegance E). Prices start from NPR 2,20,000. Want details on any?";
+    return "We have MC SU8, MC Tank, MC Vmax, MC Apache, and MC Mohsen electric bikes. Want details on any?";
   }
-  if (msg.includes("petrol") || msg.includes("sports")) {
-    return "Our petrol range includes Storm 250, Titan 400, Rider 150, Swift 125, Royal 150, and Urban 110. What are you looking for?";
+  if (msg.includes("petrol")) {
+    return "Our petrol bikes include MC Woliao, MC Moying, MC AK, and MC DR. What are you looking for?";
   }
-  if (msg.includes("price") || msg.includes("cost") || msg.includes("emi")) {
-    return "Prices range from NPR 1,85,000 to NPR 5,75,000 with EMI options available. Ask about a specific model!";
+  if (msg.includes("sports")) {
+    return "We have MC Modeway 500RR and 800RR sports bikes. The 800RR hits 240 km/h!";
+  }
+  if (msg.includes("price") || msg.includes("cost")) {
+    return "Please contact our showroom for latest pricing at +977-9763230000.";
   }
   if (msg.includes("test") || msg.includes("ride")) {
-    return "Book a test ride through our contact form or call +977-9763230000. We're at Tokha-2, Kathmandu.";
+    return "Book a test ride at our showroom — Tokha-2, Kathmandu or call +977-9763230000.";
   }
-  return "I can help with EV models, petrol bikes, prices, EMI, and test rides. What would you like to know?";
+  if (msg.includes("warranty")) {
+    return "Frame/Motor/Battery: 12 months. Controller/Charger: 6 months. Call +977-9763230000 for details.";
+  }
+  return "I can help with EV bikes, petrol bikes, sports bikes, specs, and warranty. What would you like to know?";
 }
-
 module.exports = router;
