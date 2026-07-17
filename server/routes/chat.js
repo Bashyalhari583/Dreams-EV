@@ -174,7 +174,10 @@ router.post("/", chatLimiter, async (req, res) => {
   }
 
   // If no API key, use simple fallback replies
-  if (!process.env.DEEPINFRA_API_KEY) {
+  // if (!process.env.DEEPINFRA_API_KEY) {
+  //   return res.json({ reply: fallbackReply(userMessage) });
+  // }
+  if (!process.env.GROQ_API_KEY) {
     return res.json({ reply: fallbackReply(userMessage) });
   }
 
@@ -195,21 +198,24 @@ router.post("/", chatLimiter, async (req, res) => {
 
     // Call DeepInfra API
     const response = await fetch(
-      "https://api.deepinfra.com/v1/openai/chat/completions",
+      // "https://api.deepinfra.com/v1/openai/chat/completions",
+      "https://api.groq.com/openai/v1/chat/completions",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.DEEPINFRA_API_KEY}`,
+          // Authorization: `Bearer ${process.env.DEEPINFRA_API_KEY}`,
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+          // model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+          model: "llama-3.3-70b-versatile",
           messages,
           max_tokens: 400,
           temperature: 0.75,
           top_p: 0.9,
         }),
-        signal: AbortSignal.timeout(15000), // 15s timeout
+        signal: AbortSignal.timeout(8000), // 8s timeout
       },
     );
 

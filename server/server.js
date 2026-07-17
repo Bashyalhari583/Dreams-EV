@@ -21,7 +21,7 @@ app.use(
     origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
-  })
+  }),
 );
 app.use(express.json({ limit: "10kb" })); // Parse JSON, cap body size
 app.use("/api", apiLimiter); // Rate limit all /api routes
@@ -56,12 +56,13 @@ async function start() {
   app.listen(PORT, () => {
     console.log(`✓ Server running on http://localhost:${PORT}`);
     console.log(`  Environment: ${process.env.NODE_ENV || "development"}`);
+    // console.log(
+    //   `  DeepInfra AI: ${process.env.DEEPINFRA_API_KEY ? "configured" : "not set (fallback mode)"}`,
+    // );
     console.log(
-      `  DeepInfra AI: ${process.env.DEEPINFRA_API_KEY ? "configured" : "not set (fallback mode)"}`
+      `  Groq AI: ${process.env.GROQ_API_KEY ? "configured ✓" : "not set (fallback mode)"}`,
     );
-    console.log(
-      `  Email: ${process.env.MAIL_USER ? "configured" : "not set"}`
-    );
+    console.log(`  Email: ${process.env.MAIL_USER ? "configured" : "not set"}`);
   });
 }
 
