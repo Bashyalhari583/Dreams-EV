@@ -5,12 +5,13 @@ import VehicleCard from "../components/VehicleCard";
 import hero from "../../public/hero.jpg";
 
 // ─── Featured vehicle config ─────────────────────────────────────────────────
-const FEATURED_IDS = ["thunder-ev", "city-spark", "titan-400", "royal-150"];
+const FEATURED_IDS = ["mc-su8", "mc-tank", "mc-vmax", "mc-apache", "mc-mohsen"];
 const FEATURED_LABELS = [
-  "Trending EV Bike",
-  "Popular Scooter",
-  "New Launch",
-  "Best Seller",
+  "Flagship EV Bike",
+  "Power Cruiser",
+  "Sport EV",
+  "Trail Blazer",
+  "Urban Scooter",
 ];
 
 // ─── Feature grid items ──────────────────────────────────────────────────────
@@ -59,15 +60,25 @@ const FEATURES = [
 
 export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [visible, setVisible] = useState(true);
   const featuredVehicles = FEATURED_IDS.map((id) =>
     vehicles.find((v) => v.id === id),
-  );
+  ).filter(Boolean);
+  const total = featuredVehicles.length;
 
-  // Auto-rotate featured slider
+  const goTo = (next) => {
+    setVisible(false);
+    setTimeout(() => {
+      setActiveSlide((next + total) % total);
+      setVisible(true);
+    }, 220);
+  };
+
+  // Auto-rotate
   useEffect(() => {
-    const timer = setInterval(() => setActiveSlide((i) => (i + 1) % 4), 6500);
+    const timer = setInterval(() => goTo(activeSlide + 1), 6500);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlide]);
 
   const current = featuredVehicles[activeSlide];
 
@@ -235,92 +246,323 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════════════
           FEATURED VEHICLES — Dark band section with slider
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section className="dark-band">
+      <section className="dark-band" style={{ overflow: "hidden" }}>
         <div className="section-container">
-          <div className="mb-8" style={{ maxWidth: 820 }}>
-            <p className="eyebrow">Featured vehicles</p>
-            <h2 className="section-heading font-display font-bold mt-3">
-              Trending EV bikes, popular scooters, new launches, and best
-              sellers.
-            </h2>
+          {/* Header row */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+              marginBottom: "3rem",
+            }}
+          >
+            <div style={{ maxWidth: 600 }}>
+              <p className="eyebrow">Featured vehicles</p>
+              <h2 className="section-heading font-display font-bold mt-3">
+                Trending EV bikes, popular scooters, new launches, and best
+                sellers.
+              </h2>
+            </div>
+
+            {/* Slide counter + dots */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                gap: ".6rem",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: ".72rem",
+                  fontWeight: 800,
+                  letterSpacing: ".12em",
+                  color: "rgba(255,255,255,.3)",
+                  textTransform: "uppercase",
+                }}
+              >
+                <span style={{ color: "#19d7ff", fontSize: "1.1rem" }}>
+                  {String(activeSlide + 1).padStart(2, "0")}
+                </span>{" "}
+                / {String(total).padStart(2, "0")}
+              </span>
+              <div style={{ display: "flex", gap: 6 }}>
+                {featuredVehicles.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    style={{
+                      width: i === activeSlide ? 28 : 8,
+                      height: 8,
+                      borderRadius: 999,
+                      background:
+                        i === activeSlide
+                          ? "linear-gradient(90deg, #19d7ff, #0fb8d9)"
+                          : "rgba(255,255,255,.18)",
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "all .35s cubic-bezier(.2,.72,.18,1)",
+                      padding: 0,
+                    }}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Progress bar */}
+          <div
+            style={{
+              width: "100%",
+              height: 2,
+              background: "rgba(255,255,255,.07)",
+              borderRadius: 999,
+              marginBottom: "2.5rem",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                borderRadius: 999,
+                background: "linear-gradient(90deg, #19d7ff, #0fb8d9)",
+                width: `${((activeSlide + 1) / total) * 100}%`,
+                transition: "width .6s cubic-bezier(.2,.72,.18,1)",
+              }}
+            />
           </div>
 
           {current && (
             <div
-              className="grid items-center gap-3"
-              style={{ gridTemplateColumns: "auto 1fr auto" }}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "clamp(2rem, 6vw, 5rem)",
+                alignItems: "center",
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(12px)",
+                transition: "opacity .22s ease, transform .22s ease",
+              }}
+              className="max-md:grid-cols-1"
             >
-              {/* Prev Arrow */}
-              <button
-                onClick={() => setActiveSlide((activeSlide + 3) % 4)}
-                className="w-12 h-12 rounded-full border border-white/[.14] bg-white/[.08] text-white text-2xl flex-shrink-0 flex items-center justify-center hover:border-brand-cyan/40 transition-colors"
-                aria-label="Previous"
-              >
-                ‹
-              </button>
-
-              {/* Slide Content */}
-              <div
-                className="grid md:grid-cols-[.82fr_1.18fr] gap-6 lg:gap-12 items-center min-w-0 animate-fade-up"
-                key={activeSlide}
-              >
-                {/* Copy */}
-                <div className="grid gap-4">
-                  <p className="eyebrow">{FEATURED_LABELS[activeSlide]}</p>
-                  <h3
-                    className="font-display font-bold uppercase"
+              {/* ── Left: Copy ── */}
+              <div style={{ display: "grid", gap: "1.5rem" }}>
+                {/* Label badge */}
+                <div>
+                  <span
                     style={{
-                      fontSize: "clamp(2rem, 5vw, 4.6rem)",
-                      lineHeight: ".92",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "4px 12px",
+                      borderRadius: 999,
+                      background: "rgba(25,215,255,.10)",
+                      border: "1px solid rgba(25,215,255,.22)",
+                      fontSize: ".62rem",
+                      fontWeight: 800,
+                      color: "#19d7ff",
+                      textTransform: "uppercase",
+                      letterSpacing: ".1em",
                     }}
                   >
-                    {current.name}
-                  </h3>
-                  <p className="text-white/75 leading-relaxed">
-                    {current.summary}
-                  </p>
-                  {/* Spec list */}
-                  <div className="flex flex-wrap gap-4">
-                    {Object.entries(current.stats).map(([label, value]) => (
-                      <span key={label} className="text-sm">
-                        <strong className="text-white block text-lg">
-                          {value}
-                        </strong>
-                        <span className="text-[#aeb7c4] text-xs uppercase tracking-wider">
-                          {label}
-                        </span>
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    to={`/vehicle/${current.id}`}
-                    className="btn-primary w-max"
-                  >
-                    View More
-                  </Link>
+                    <span
+                      style={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: 999,
+                        background: "#19d7ff",
+                        display: "inline-block",
+                        animation: "pulse 1.6s ease-in-out infinite",
+                      }}
+                    />
+                    {FEATURED_LABELS[activeSlide]}
+                  </span>
                 </div>
 
-                {/* Media */}
-                <div className="animate-drift">
+                <h3
+                  className="font-display font-bold uppercase"
+                  style={{
+                    fontSize: "clamp(2.4rem, 5vw, 5rem)",
+                    lineHeight: ".88",
+                    letterSpacing: "-.01em",
+                  }}
+                >
+                  {current.name}
+                </h3>
+
+                <p
+                  style={{
+                    color: "rgba(255,255,255,.65)",
+                    lineHeight: 1.7,
+                    fontSize: ".95rem",
+                  }}
+                >
+                  {current.summary}
+                </p>
+
+                {/* Spec pills */}
+                <div
+                  style={{ display: "flex", flexWrap: "wrap", gap: ".6rem" }}
+                >
+                  {Object.entries(current.stats).map(([label, value]) => (
+                    <div
+                      key={label}
+                      style={{
+                        padding: ".5rem .9rem",
+                        borderRadius: 10,
+                        background: "rgba(255,255,255,.05)",
+                        border: "1px solid rgba(255,255,255,.1)",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 2,
+                        minWidth: 80,
+                      }}
+                    >
+                      <strong
+                        style={{
+                          color: "#fff",
+                          fontSize: "1rem",
+                          fontWeight: 800,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {value}
+                      </strong>
+                      <span
+                        style={{
+                          color: "#aeb7c4",
+                          fontSize: ".58rem",
+                          textTransform: "uppercase",
+                          letterSpacing: ".1em",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Actions */}
+                <div
+                  style={{
+                    display: "flex",
+                    gap: ".85rem",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                  }}
+                >
+                  <Link to={`/vehicle/${current.id}`} className="btn-primary">
+                    View Details
+                  </Link>
+
+                  {/* Prev / Next inline */}
+                  <div style={{ display: "flex", gap: ".5rem" }}>
+                    <button
+                      onClick={() => goTo(activeSlide - 1)}
+                      style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 999,
+                        border: "1px solid rgba(255,255,255,.14)",
+                        background: "rgba(255,255,255,.07)",
+                        color: "#fff",
+                        fontSize: "1.3rem",
+                        display: "grid",
+                        placeItems: "center",
+                        cursor: "pointer",
+                        transition: "border-color .2s",
+                      }}
+                      aria-label="Previous"
+                    >
+                      ‹
+                    </button>
+                    <button
+                      onClick={() => goTo(activeSlide + 1)}
+                      style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 999,
+                        border: "1px solid rgba(255,255,255,.14)",
+                        background: "rgba(255,255,255,.07)",
+                        color: "#fff",
+                        fontSize: "1.3rem",
+                        display: "grid",
+                        placeItems: "center",
+                        cursor: "pointer",
+                        transition: "border-color .2s",
+                      }}
+                      aria-label="Next"
+                    >
+                      ›
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Right: Image ── */}
+              <div
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {/* Glow blob behind bike */}
+                <div
+                  style={{
+                    position: "absolute",
+                    width: "70%",
+                    height: "60%",
+                    borderRadius: "50%",
+                    background:
+                      "radial-gradient(ellipse, rgba(25,215,255,.14) 0%, transparent 70%)",
+                    filter: "blur(32px)",
+                    pointerEvents: "none",
+                    zIndex: 0,
+                  }}
+                />
+
+                <div
+                  className="animate-drift"
+                  style={{ position: "relative", zIndex: 1, width: "100%" }}
+                >
                   <img
                     src={current.image}
                     alt={current.name}
                     className="featured-media-img"
                   />
                 </div>
-              </div>
 
-              {/* Next Arrow */}
-              <button
-                onClick={() => setActiveSlide((activeSlide + 1) % 4)}
-                className="w-12 h-12 rounded-full border border-white/[.14] bg-white/[.08] text-white text-2xl flex-shrink-0 flex items-center justify-center hover:border-brand-cyan/40 transition-colors"
-                aria-label="Next"
-              >
-                ›
-              </button>
+                {/* Bottom reflection line */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: "10%",
+                    right: "10%",
+                    height: 1,
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(25,215,255,.3), transparent)",
+                  }}
+                />
+              </div>
             </div>
           )}
         </div>
+
+        <style>{`
+          @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .4; transform: scale(.7); }
+          }
+        `}</style>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════

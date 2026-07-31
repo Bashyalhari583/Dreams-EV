@@ -145,7 +145,7 @@ MC Modeway 800RR:
 ━━━ CONTACT ━━━
 - Location: Tokha-2, Kathmandu, Nepal
 - Phone: +977-9763230000
-- Email: boyktm520@gmail.com
+- Email: micheautonepal@gmail.com
 - Hours: Sunday–Friday, 9AM–6PM
 - Website: mc-motoworld.com
 
@@ -159,7 +159,7 @@ MC Modeway 800RR:
 7. For test ride: direct to showroom or +977-9763230000
 `;
 
-// Contact: +977-9763230000 | boyktm520@gmail.com | Sun-Fri 9AM-6PM
+// Contact: +977-9763230000 | micheautonepal@gmail.com | Sun-Fri 9AM-6PM
 // Talk like a real person. Short answers. No robot phrases.`;
 
 // POST /api/chat

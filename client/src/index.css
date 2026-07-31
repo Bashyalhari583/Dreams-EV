@@ -8,10 +8,15 @@ html { scroll-behavior: smooth; background: #020304; }
 
 body {
   background:
-    radial-gradient(circle at 16% 6%, rgba(25, 215, 255, .14), transparent 28rem),
+    /* radial-gradient(circle at 16% 6%, rgba(25, 215, 255, .14), transparent 28rem),
     radial-gradient(circle at 85% 12%, rgba(51, 255, 153, .09), transparent 26rem),
     radial-gradient(circle at 80% 76%, rgba(255, 36, 79, .12), transparent 28rem),
-    linear-gradient(180deg, #020304, #080b10 42%, #020304);
+    linear-gradient(180deg, #020304, #080b10 42%, #020304); */
+    radial-gradient(circle at 16% 6%, rgba(25, 215, 255, .22), transparent 28rem),
+    radial-gradient(circle at 85% 12%, rgba(51, 255, 153, .14), transparent 26rem),
+    radial-gradient(circle at 80% 76%, rgba(255, 36, 79, .12), transparent 28rem),
+    /* linear-gradient(180deg, #080c12, #0d1117 42%, #080c12); */
+    linear-gradient(180deg, #060810, #0b0f18 42%, #060810);
 }
 
 body::before {
@@ -19,7 +24,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: .16;
+  opacity: .22;
   background-image:
     linear-gradient(rgba(255, 255, 255, .08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px);
@@ -212,14 +217,22 @@ body::before {
 
 /* ─── Featured media float ─────────────────────────────────────────── */
 .featured-media-img {
-  min-height: 480px;
-  border: 1px solid rgba(255, 255, 255, .14);
-  border-radius: 8px;
-  box-shadow: 0 26px 80px rgba(0, 0, 0, .48);
-  object-fit: cover;
+  /* min-height: 480px; */
+  /* border: 1px solid rgba(255, 255, 255, .14); */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 26px 80px rgba(0, 0, 0, .48); */
+  /* object-fit: cover; */
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 24px 60px rgba(25, 215, 255, .18)) drop-shadow(0 8px 24px rgba(0,0,0,.7));
+  transition: filter .4s ease;
 }
+.featured-media-img:hover {
+  filter: drop-shadow(0 28px 70px rgba(25, 215, 255, .28)) drop-shadow(0 8px 24px rgba(0,0,0,.6));
+}
+
 
 /* ─── Feature icon box ─────────────────────────────────────────────── */
 .feature-icon-box {
