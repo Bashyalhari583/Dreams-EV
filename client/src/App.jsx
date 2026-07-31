@@ -10,7 +10,8 @@ import EVPage from "./pages/EVPage";
 import PetrolPage from "./pages/PetrolPage";
 import VehicleDetailPage from "./pages/VehicleDetailPage";
 import DealersPage from "./pages/DealersPage";
-import NewsPage from "./pages/NewsPage";
+// import NewsPage from "./pages/NewsPage";
+import GalleryPage from "./pages/GalleryPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 
@@ -30,7 +31,8 @@ export default function App() {
           <Route path="/petrol" element={<PetrolPage />} />
           <Route path="/vehicle/:id" element={<VehicleDetailPage />} />
           <Route path="/dealers" element={<DealersPage />} />
-          <Route path="/news" element={<NewsPage />} />
+          {/* <Route path="/news" element={<NewsPage />} /> */}
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

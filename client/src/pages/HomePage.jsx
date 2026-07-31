@@ -71,7 +71,7 @@ export default function HomePage() {
     setTimeout(() => {
       setActiveSlide((next + total) % total);
       setVisible(true);
-    }, 220);
+    }, 180);
   };
 
   // Auto-rotate
@@ -174,9 +174,9 @@ export default function HomePage() {
             style={{ maxWidth: 650, animationDelay: "0.4s" }}
           >
             {[
-              { value: "150km+", label: "EV range" },
-              { value: "110km/h", label: "Top speed" },
-              { value: "3hrs", label: "Fast charging" },
+              { value: "120km+", label: "EV range" },
+              { value: "100km/h", label: "Top speed" },
+              { value: "8hrs", label: "Fast charging" },
             ].map((stat) => (
               <div key={stat.label} className="stat-card">
                 <strong
@@ -345,8 +345,14 @@ export default function HomePage() {
                 gap: "clamp(2rem, 6vw, 5rem)",
                 alignItems: "center",
                 opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(12px)",
-                transition: "opacity .22s ease, transform .22s ease",
+                // transform: visible ? "translateY(0)" : "translateY(12px)",
+                // transition: "opacity .22s ease, transform .22s ease",
+                // yo portion ma — opacity + transform duitai cha already, tara add garnu:
+                transition: "opacity .18s ease, transform .18s ease",
+                // ani transform change:
+                transform: visible
+                  ? "translateY(0) scale(1)"
+                  : "translateY(8px) scale(.98)",
               }}
               className="max-md:grid-cols-1"
             >
@@ -529,10 +535,7 @@ export default function HomePage() {
                   }}
                 />
 
-                <div
-                  className="animate-drift"
-                  style={{ position: "relative", zIndex: 1, width: "100%" }}
-                >
+                <div style={{ position: "relative", zIndex: 1, width: "100%" }}>
                   <img
                     src={current.image}
                     alt={current.name}
