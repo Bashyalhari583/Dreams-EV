@@ -11,7 +11,7 @@ import PetrolPage from "./pages/PetrolPage";
 import VehicleDetailPage from "./pages/VehicleDetailPage";
 import DealersPage from "./pages/DealersPage";
 // import NewsPage from "./pages/NewsPage";
-import GalleryPage from "./pages/GalleryPage";
+import GalleryPage from "./pages/GalleryPage.jsx";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 
