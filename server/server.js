@@ -14,7 +14,22 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ─── Security Middleware ─────────────────────────────────────────────────────
-app.use(helmet()); // Sets security HTTP headers
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        frameSrc: ["'self'", "https://www.google.com/"],
+        imgSrc: ["'self'", "data:", "blob:", "https:"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  }),
+);
+
+// ─── Security Middleware ─────────────────────────────────────────────────────
 app.use(hpp()); // Prevents HTTP parameter pollution
 app.use(
   cors({
