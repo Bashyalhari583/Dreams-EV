@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const STATS = [
-  { value: 1200, label: "Vehicles Sold" },
-  { value: 950, label: "Customers" },
+  { value: 30000, label: "Vehicles Sold" },
+  { value: 1000, label: "Customers" },
   { value: 18, label: "Dealers" },
   { value: 9, label: "Service Centers" },
 ];

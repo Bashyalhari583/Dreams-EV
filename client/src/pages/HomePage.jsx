@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { vehicles, categories } from "../data/vehicles";
 import VehicleCard from "../components/VehicleCard";
-import hero from "../../public/hero.jpg";
+import hero from "../../public/hero.webp";
 
 // ─── Featured vehicle config ─────────────────────────────────────────────────
 const FEATURED_IDS = ["mc-su8", "mc-tank", "mc-vmax", "mc-apache", "mc-mohsen"];
@@ -94,7 +94,7 @@ export default function HomePage() {
       >
         {/* Video Background */}
         <div
-          className="absolute inset-0 overflow-hidden"
+          className="absolute inset-0 overflow-hidden hero-bg"
           style={{
             backgroundImage: hero && `url('${hero}')`,
             backgroundSize: "cover",
