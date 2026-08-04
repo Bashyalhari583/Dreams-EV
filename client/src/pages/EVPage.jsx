@@ -66,32 +66,6 @@ export default function EVPage() {
       </div>
 
       {/* Vehicle Grid */}
-      {/* <div className="section-container !pt-4">
-        {groups.map((type) => {
-          const items = filtered.filter((v) => v.type === type);
-          if (!items.length) return null;
-          const title =
-            type.replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase()) +
-            "s";
-          return (
-            <section key={type} className="mb-12">
-              <h2 className="text-xl font-display font-bold mb-6">{title}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {items.map((v) => (
-                  <VehicleCard key={v.id} vehicle={v} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
-        {filtered.length === 0 && (
-          <p className="text-center text-white/40 py-12">
-            No models match your search.
-          </p>
-        )}
-      </div> */}
-
-      {/* Vehicle Grid */}
       <div className="section-container !pt-4">
         {filter === "all" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
