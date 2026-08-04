@@ -38,14 +38,22 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-cyan to-brand-orange flex items-center justify-center text-brand-dark font-display font-bold text-sm">
-                MC
-              </span>
+              <img
+                src="/images/logo.webp"
+                alt="MiChe Auto Nepal"
+                style={{
+                  width: 42,
+                  height: 42,
+                  borderRadius: 8,
+                  objectFit: "contain",
+                  flexShrink: 0,
+                }}
+              />
               <span>
                 <strong className="text-white text-sm">MiChe Auto Nepal</strong>
-                <small className="block text-[10px] text-white/40">
+                {/* <small className="block text-[10px] text-white/40">
                   Pvt. Ltd.
-                </small>
+                </small> */}
               </span>
             </Link>
             <p className="text-white/40 text-sm">
