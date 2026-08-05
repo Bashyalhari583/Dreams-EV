@@ -142,10 +142,10 @@ export default function Footer() {
               +977-9763230000
             </a>
             <a
-              href="mailto:micheautonepal@gmail.com"
+              href="mailto:info@mc-motoworld.com"
               className="text-brand-cyan text-sm block hover:underline"
             >
-              micheautonepal@gmail.com
+              info@mc-motoworld.com
             </a>
 
             {/* Social Icons */}

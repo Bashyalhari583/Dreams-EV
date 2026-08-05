@@ -54,6 +54,7 @@ body::before {
   .hero-video {
     object-position: 30% center !important;
   }
+  .featured-media-img { height: 260px !important }
 }
 /* ─── Hero Video Effects ───────────────────────────────────────────────── */
 .hero-video {

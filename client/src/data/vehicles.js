@@ -217,8 +217,7 @@ export const vehicles = [
     group: "Petrol Bikes",
     name: "MC Woliao",
     price: "Contact Showroom",
-    image:
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1500&q=90",
+    image: "../images/petrols/petrol.webp",
     gallery: [
       "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1500&q=90",
       "https://images.unsplash.com/photo-1558981852-426c6c22a060?auto=format&fit=crop&w=1500&q=90",
@@ -388,8 +387,7 @@ export const vehicles = [
     group: "Sports Bikes",
     name: "MC Modeway 500RR",
     price: "Contact Showroom",
-    image:
-      "https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=1500&q=90",
+    image: "../images/sports/sport.webp",
     gallery: [
       "https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=1500&q=90",
       "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1500&q=90",

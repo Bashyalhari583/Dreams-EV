@@ -104,10 +104,10 @@ export default function ContactPage() {
               +977-9763230000
             </a>
             <a
-              href="mailto:micheautonepal@gmail.com"
+              href="mailto:contact@mc-motoworld.com"
               className="text-brand-cyan text-sm block mb-3 hover:underline"
             >
-              micheautonepal@gmail.com
+              contact@mc-motoworld.com
             </a>
             <span className="text-white/40 text-xs block mb-5">
               Sunday - Friday 9:00-18:00
@@ -235,9 +235,12 @@ export default function ContactPage() {
           <div className="glass overflow-hidden min-h-[300px]">
             <iframe
               title="MiChe Auto Nepal contact map"
-              src="https://www.google.com/maps?q=Tokha-2%2C%20Kathmandu%2C%20Nepal&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4436.459409680579!2d85.32271282546573!3d27.78302254876104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1f003ef27069%3A0xb1c24262b54253af!2sMc%20miche%20auto!5e0!3m2!1sen!2snp!4v1785908096753!5m2!1sen!2snp"
               className="w-full h-full min-h-[500px]"
               loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              style={{ border: 0 }}
             />
           </div>
         </div>

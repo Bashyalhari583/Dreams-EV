@@ -71,7 +71,7 @@ export default function HomePage() {
     setTimeout(() => {
       setActiveSlide((next + total) % total);
       setVisible(true);
-    }, 180);
+    }, 220);
   };
 
   // Auto-rotate
@@ -104,6 +104,7 @@ export default function HomePage() {
         >
           <video
             className="hero-video absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "64% center" }}
             autoPlay
             muted
             loop
@@ -174,9 +175,9 @@ export default function HomePage() {
             style={{ maxWidth: 650, animationDelay: "0.4s" }}
           >
             {[
-              { value: "120km+", label: "EV range" },
-              { value: "100km/h", label: "Top speed" },
-              { value: "8hrs", label: "Fast charging" },
+              { value: "150km+", label: "EV range" },
+              { value: "110km/h", label: "Top speed" },
+              { value: "3hrs", label: "Fast charging" },
             ].map((stat) => (
               <div key={stat.label} className="stat-card">
                 <strong
@@ -207,7 +208,10 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((cat) => {
-            const img = vehicles.find((v) => v.type === cat.type)?.image;
+            const img =
+              cat.type === "electric-bike"
+                ? "../images/ev/ev.webp"
+                : vehicles.find((v) => v.type === cat.type)?.image;
             return (
               <Link
                 key={cat.type}
@@ -345,16 +349,12 @@ export default function HomePage() {
                 gap: "clamp(2rem, 6vw, 5rem)",
                 alignItems: "center",
                 opacity: visible ? 1 : 0,
-                // transform: visible ? "translateY(0)" : "translateY(12px)",
-                // transition: "opacity .22s ease, transform .22s ease",
-                // yo portion ma — opacity + transform duitai cha already, tara add garnu:
-                transition: "opacity .18s ease, transform .18s ease",
-                // ani transform change:
                 transform: visible
                   ? "translateY(0) scale(1)"
                   : "translateY(8px) scale(.98)",
+                transition: "opacity .18s ease, transform .18s ease",
               }}
-              className="max-md:grid-cols-1"
+              className="max-md:!grid-cols-1"
             >
               {/* ── Left: Copy ── */}
               <div style={{ display: "grid", gap: "1.5rem" }}>
@@ -518,6 +518,7 @@ export default function HomePage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  minHeight: 280,
                 }}
               >
                 {/* Glow blob behind bike */}
@@ -535,7 +536,10 @@ export default function HomePage() {
                   }}
                 />
 
-                <div style={{ position: "relative", zIndex: 1, width: "100%" }}>
+                <div
+                  className="animate-drift"
+                  style={{ position: "relative", zIndex: 1, width: "100%" }}
+                >
                   <img
                     src={current.image}
                     alt={current.name}

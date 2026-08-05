@@ -6,14 +6,14 @@ const DEALERS = [
     badge: "Assembly Plant",
     address: "Tokha-2, Kathmandu, Nepal",
     phone: "+977-9763230000",
-    email: "micheautonepal@gmail.com",
+    email: "info@mc-motoworld.com",
     hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
     showEmail: true,
   },
   {
-    name: "Kupandol Branch",
+    name: "Kupondole Branch",
     badge: "Dealer",
-    address: "Kupandol, Lalitpur, Nepal",
+    address: "Kupondole, Lalitpur, Nepal",
     phone: "+977-9765015555",
     hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
     showEmail: false,
@@ -191,10 +191,13 @@ export default function DealersPage() {
           {/* Map — Tokha, Kathmandu */}
           <div className="glass overflow-hidden min-h-[300px]">
             <iframe
-              title="MiChe Auto Nepal map"
-              src="https://www.google.com/maps?q=Tokha-2%2C+Kathmandu%2C+Nepal&output=embed"
-              className="w-full h-full min-h-[400px]"
+              title="MiChe Auto Nepal contact map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4436.459409680579!2d85.32271282546573!3d27.78302254876104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1f003ef27069%3A0xb1c24262b54253af!2sMc%20miche%20auto!5e0!3m2!1sen!2snp!4v1785908096753!5m2!1sen!2snp"
+              className="w-full h-full min-h-[500px]"
               loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              style={{ border: 0 }}
             />
           </div>
         </div>

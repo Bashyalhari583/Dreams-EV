@@ -12,26 +12,26 @@ const EV_VEHICLES = [
   {
     id: "mc-tank",
     name: "MC Tank",
-    type: "electric-bike",
-    image: "/images/ev/Tank/00846.webp",
+    type: "electric-scooter",
+    image: "/images/ev/Tank/TANK 4-2.webp",
   },
   {
     id: "mc-vmax",
     name: "MC Vmax",
-    type: "electric-bike",
+    type: "electric-scooter",
     image: "/images/ev/Vmax-2/20250411161753.webp",
   },
   {
     id: "mc-apache",
     name: "MC Apache",
-    type: "electric-bike",
-    image: "/images/ev/Apache/1e72cff5bbb67a28f8b2e2678b18ff7.webp",
+    type: "electric-scooter",
+    image: "/images/ev/Apache/f62b423467ca9b7c68c13fbf0090793.webp",
   },
   {
     id: "mc-mohsen",
     name: "MC Mohsen",
     type: "electric-scooter",
-    image: "/images/ev/Mohsen/01066.webp",
+    image: "/images/ev/Mohsen/03160.webp",
   },
 ];
 
