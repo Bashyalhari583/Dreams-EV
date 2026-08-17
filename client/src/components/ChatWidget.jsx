@@ -15,10 +15,16 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const [showDot, setShowDot] = useState(false);
   const [history, setHistory] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const messagesRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Show unread dot after 3 seconds
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!open) setShowDot(true);
@@ -26,14 +32,12 @@ export default function ChatWidget() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-scroll to bottom on new messages
   useEffect(() => {
     if (messagesRef.current) {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }
   }, [messages, loading]);
 
-  // Auto-focus input whenever chat opens
   useEffect(() => {
     if (open && inputRef.current) {
       setTimeout(() => inputRef.current?.focus(), 80);
@@ -71,8 +75,6 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, { role: "user", text: msg }]);
     setInput("");
     setLoading(true);
-
-    // Re-focus input immediately after sending so user can keep typing
     setTimeout(() => inputRef.current?.focus(), 0);
 
     const newHistory = [...history, { role: "user", content: msg }];
@@ -85,7 +87,6 @@ export default function ChatWidget() {
       });
       const data = await res.json();
       const reply = data.reply || data.error || "Something went wrong.";
-
       setMessages((prev) => [...prev, { role: "bot", text: reply }]);
       setHistory([...newHistory, { role: "assistant", content: reply }]);
     } catch {
@@ -93,23 +94,39 @@ export default function ChatWidget() {
         ...prev,
         {
           role: "bot",
-          text: "Connection error. Please try again or call +977-9763230000.",
+          text: "Connection error. Please try again or call +977-9763789999.",
         },
       ]);
     } finally {
       setLoading(false);
-      // Focus again after bot replies
       setTimeout(() => inputRef.current?.focus(), 80);
     }
   }
 
-  // Enter to send, Shift+Enter for newline (not needed here but good practice)
   function handleKeyDown(e) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage(input);
     }
   }
+
+  // Mobile ma panel style alag, desktop ma original
+  const panelStyle = isMobile
+    ? {
+        position: "fixed",
+        bottom: 90,
+        left: 12,
+        right: 12,
+        maxHeight: 520,
+        zIndex: 9999,
+      }
+    : {
+        position: "absolute",
+        bottom: "4rem",
+        right: 0,
+        width: 360,
+        maxHeight: 520,
+      };
 
   return (
     <div className="fixed bottom-5 z-50" style={{ right: "5rem" }}>
@@ -128,8 +145,8 @@ export default function ChatWidget() {
       {/* Chat Panel */}
       {open && (
         <div
-          className="absolute bottom-16 right-0 w-[360px] max-h-[520px] bg-brand-dark/75 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fade-up"
-          // Clicking anywhere inside panel won't close it or steal focus wrongly
+          style={panelStyle}
+          className="bg-brand-dark/75 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fade-up"
           onMouseDown={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -148,7 +165,6 @@ export default function ChatWidget() {
               onClick={clearChat}
               className="p-1.5 text-white/40 hover:text-white transition-colors"
               title="Clear chat"
-              // Prevent this button from stealing focus from input
               onMouseDown={(e) => e.preventDefault()}
             >
               <Trash2 size={16} />
@@ -184,7 +200,6 @@ export default function ChatWidget() {
                 </div>
               </div>
             ))}
-
             {loading && (
               <div className="flex justify-start">
                 <div className="bg-white/10 px-4 py-3 rounded-2xl rounded-bl-md flex gap-1.5 items-center">
@@ -202,13 +217,12 @@ export default function ChatWidget() {
             )}
           </div>
 
-          {/* Quick Chips — show only on first message */}
+          {/* Quick Chips */}
           {messages.length <= 1 && (
             <div className="px-4 pb-2 flex flex-wrap gap-1.5">
               {QUICK_CHIPS.map((chip) => (
                 <button
                   key={chip.label}
-                  // onMouseDown prevents focus leaving input on chip click
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => sendMessage(chip.text)}
                   className="text-xs px-3 py-1.5 rounded-full border border-white/20 text-white/60 hover:border-brand-cyan hover:text-brand-cyan transition-colors"
@@ -219,7 +233,7 @@ export default function ChatWidget() {
             </div>
           )}
 
-          {/* Input bar — no form tag, just div + onKeyDown */}
+          {/* Input */}
           <div className="flex items-center gap-2 px-3 py-3 border-t border-white/10">
             <input
               ref={inputRef}
@@ -234,7 +248,6 @@ export default function ChatWidget() {
             <button
               onClick={() => sendMessage(input)}
               disabled={loading || !input.trim()}
-              // onMouseDown prevent focus loss on button click
               onMouseDown={(e) => e.preventDefault()}
               className="p-2.5 bg-brand-cyan text-brand-dark rounded-xl hover:bg-brand-cyan/80 transition-colors disabled:opacity-30"
               aria-label="Send"

@@ -144,7 +144,7 @@ MC Modeway 800RR:
 
 ━━━ CONTACT ━━━
 - Location: Tokha-2, Kathmandu, Nepal
-- Phone: +977-9763230000
+- Phone: +977-9763789999
 - Email: micheautonepal@gmail.com
 - Hours: Sunday–Friday, 9AM–6PM
 - Website: mc-motoworld.com
@@ -152,14 +152,14 @@ MC Modeway 800RR:
 ━━━ YOUR RULES ━━━
 1. Reply in same language as user (Nepali/Hindi/English)
 2. Never invent specs — only use data above
-3. For price: "Please contact our showroom for latest pricing at +977-9763230000"
+3. For price: "Please contact our showroom for latest pricing at +977-9763789999"
 4. Compare bikes honestly when asked
 5. Keep replies short unless user asks for full details
 6. Be friendly, use occasional emojis 😊
-7. For test ride: direct to showroom or +977-9763230000
+7. For test ride: direct to showroom or +977-9763789999
 `;
 
-// Contact: +977-9763230000 | micheautonepal@gmail.com | Sun-Fri 9AM-6PM
+// Contact: +977-9763789999 | micheautonepal@gmail.com | Sun-Fri 9AM-6PM
 // Talk like a real person. Short answers. No robot phrases.`;
 
 // POST /api/chat
@@ -250,13 +250,13 @@ function fallbackReply(message) {
     return "We have MC Modeway 500RR and 800RR sports bikes. The 800RR hits 240 km/h!";
   }
   if (msg.includes("price") || msg.includes("cost")) {
-    return "Please contact our showroom for latest pricing at +977-9763230000.";
+    return "Please contact our showroom for latest pricing at +977-9763789999.";
   }
   if (msg.includes("test") || msg.includes("ride")) {
-    return "Book a test ride at our showroom — Tokha-2, Kathmandu or call +977-9763230000.";
+    return "Book a test ride at our showroom — Tokha-2, Kathmandu or call +977-9763789999.";
   }
   if (msg.includes("warranty")) {
-    return "Frame/Motor/Battery: 12 months. Controller/Charger: 6 months. Call +977-9763230000 for details.";
+    return "Frame/Motor/Battery: 12 months. Controller/Charger: 6 months. Call +977-9763789999 for details.";
   }
   return "I can help with EV bikes, petrol bikes, sports bikes, specs, and warranty. What would you like to know?";
 }

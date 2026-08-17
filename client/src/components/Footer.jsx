@@ -136,16 +136,17 @@ export default function Footer() {
               Tokha-2, Kathmandu, Nepal
             </p>
             <a
-              href="tel:+9779763230000"
+              href="tel:+9779763789999"
               className="text-brand-cyan text-sm block mb-1 hover:underline"
             >
-              +977-9763230000
+              +977-9763789999
             </a>
             <a
-              href="mailto:info@mc-motoworld.com"
+              href="mailto:micheautonepal@gmail.com
+"
               className="text-brand-cyan text-sm block hover:underline"
             >
-              info@mc-motoworld.com
+              micheautonepal@gmail.com
             </a>
 
             {/* Social Icons */}

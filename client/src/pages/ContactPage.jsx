@@ -36,7 +36,7 @@ export default function ContactPage() {
       setForm(INITIAL);
     } catch (err) {
       setStatus(
-        err.message || "Something went wrong. Please call +977-9763230000.",
+        err.message || "Something went wrong. Please call +977-9763789999.",
       );
     } finally {
       setSubmitting(false);
@@ -98,10 +98,10 @@ export default function ContactPage() {
               Tokha-2, Kathmandu, Nepal
             </p>
             <a
-              href="tel:+9779763230000"
+              href="tel:+9779763789999"
               className="text-brand-cyan text-sm block mb-1 hover:underline"
             >
-              +977-9763230000
+              +977-9763789999
             </a>
             <a
               href="mailto:contact@mc-motoworld.com"
