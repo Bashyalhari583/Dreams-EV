@@ -175,9 +175,9 @@ export default function HomePage() {
             style={{ maxWidth: 650, animationDelay: "0.4s" }}
           >
             {[
-              { value: "150km+", label: "EV range" },
-              { value: "110km/h", label: "Top speed" },
-              { value: "3hrs", label: "Fast charging" },
+              { value: "80 - 220km+", label: "EV range" },
+              { value: "60 -110km/h", label: "Top speed" },
+              { value: "3.8 - 6hrs", label: "Fast charging" },
             ].map((stat) => (
               <div key={stat.label} className="stat-card">
                 <strong

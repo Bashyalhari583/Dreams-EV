@@ -104,10 +104,10 @@ export default function ContactPage() {
               +977-9763789999
             </a>
             <a
-              href="mailto:contact@mc-motoworld.com"
+              href="mailto:micheautonepal@gmail.com"
               className="text-brand-cyan text-sm block mb-3 hover:underline"
             >
-              contact@mc-motoworld.com
+              micheautonepal@gmail.com
             </a>
             <span className="text-white/40 text-xs block mb-5">
               Sunday - Friday 9:00-18:00
