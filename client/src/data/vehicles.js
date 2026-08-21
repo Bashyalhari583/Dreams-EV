@@ -47,7 +47,7 @@ export const vehicles = [
     type: "electric-scooter",
     group: "Electric Scooters",
     name: "MC Tank",
-    price: "Contact Showroom",
+    price: "Rs. 3,19,800",
     image: "/images/ev/Tank/TANK 4-2.webp",
     gallery: [
       "/images/ev/Tank/TANK 4-2.webp",
@@ -80,7 +80,7 @@ export const vehicles = [
       "Aluminum Alloy Rims",
     ],
     colors: ["#050505", "#ff6600", "#d8e0ea"],
-    emi: "Contact showroom for EMI options",
+    emi: "Rs. 3,19,800 | EMI options available",
   },
 
   // ─── REAL MC VMAX ──────────────────────────────────────────────────────────
@@ -89,7 +89,7 @@ export const vehicles = [
     type: "electric-scooter",
     group: "Electric Scooters",
     name: "MC Vmax",
-    price: "Contact Showroom",
+    price: "Rs. 3,79,800",
     image: "/images/ev/Vmax-2/20250411161753.webp",
     gallery: [
       "/images/ev/Vmax-2/20250411161753.webp",
@@ -122,7 +122,7 @@ export const vehicles = [
       "Aluminum Alloy Rims",
     ],
     colors: ["#808080", "#d8e0ea", "#050505"],
-    emi: "Contact showroom for EMI options",
+    emi: "Rs. 3,79,800 | EMI options available",
   },
 
   // ─── REAL MC APACHE ────────────────────────────────────────────────────────
@@ -131,7 +131,7 @@ export const vehicles = [
     type: "electric-scooter",
     group: "Electric Scooters",
     name: "MC Apache",
-    price: "Contact Showroom",
+    price: "Rs. 3,29,800",
     image: "/images/ev/Apache/f62b423467ca9b7c68c13fbf0090793.webp",
     gallery: [
       "/images/ev/Apache/f62b423467ca9b7c68c13fbf0090793.webp",
@@ -164,7 +164,7 @@ export const vehicles = [
       "Burglar Alarm",
     ],
     colors: ["#808080", "#050505", "#d8e0ea"],
-    emi: "Contact showroom for EMI options",
+    emi: "Rs. 3,29,800 | EMI options available",
   },
 
   // ─── REAL MC MOHSEN ────────────────────────────────────────────────────────
@@ -173,7 +173,7 @@ export const vehicles = [
     type: "electric-scooter",
     group: "Electric Scooters",
     name: "MC Mohsen",
-    price: "Contact Showroom",
+    price: "Rs. 2,19,800",
     image: "/images/ev/Mohsen/03160.webp",
     gallery: [
       "/images/ev/Mohsen/03160.webp",
@@ -206,7 +206,7 @@ export const vehicles = [
       "Retro Style Design",
     ],
     colors: ["#00bcd4", "#ffffff", "#050505"],
-    emi: "Contact showroom for EMI options",
+    emi: "Rs. 2,19,800 | EMI options available",
   },
 
   // ─── PETROL BIKES (Unsplash images — real photos not uploaded yet) ──────────
