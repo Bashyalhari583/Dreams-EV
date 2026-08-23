@@ -77,7 +77,7 @@ export default function App() {
 
       {/* WhatsApp & Call FABs */}
       <a
-        href="https://wa.me/9779763789999"
+        href="https://wa.me/9779763610526"
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-24 right-5 z-40 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg hover:bg-green-600 transition-colors"
@@ -86,7 +86,7 @@ export default function App() {
         WA
       </a>
       <a
-        href="tel:+9779763789999"
+        href="tel:+9779763610526"
         className="fixed bottom-10 right-5 z-40 w-12 h-12 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg hover:bg-orange-600 transition-colors"
         aria-label="Call"
       >

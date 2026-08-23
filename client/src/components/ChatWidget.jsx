@@ -94,7 +94,7 @@ export default function ChatWidget() {
         ...prev,
         {
           role: "bot",
-          text: "Connection error. Please try again or call +977-9763789999.",
+          text: "Connection error. Please try again or call +977-9763610526.",
         },
       ]);
     } finally {

@@ -5,7 +5,7 @@ const DEALERS = [
     name: "MiChe Auto Nepal Pvt. Ltd.",
     badge: "Assembly Plant",
     address: "Tokha-2, Kathmandu, Nepal",
-    phone: "+977-9763789999",
+    phone: "+977-9763610526",
     email: "micheautonepal@gmail.com",
     hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
     showEmail: true,

@@ -492,7 +492,7 @@ export default function Navbar({ onSearchOpen }) {
           </button>
 
           <a
-            href="tel:+9779763789999"
+            href="tel:+9779763610526"
             className="hidden sm:inline-flex items-center justify-center"
             style={{
               minHeight: 40,
