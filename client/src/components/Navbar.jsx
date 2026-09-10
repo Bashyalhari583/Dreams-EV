@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { CONTACT } from "../config/contact";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronLeft, ChevronRight, Zap, Search } from "lucide-react";
 
@@ -492,7 +493,7 @@ export default function Navbar({ onSearchOpen }) {
           </button>
 
           <a
-            href="tel:+9779763610526"
+            href={`tel:${CONTACT.phoneTel}`}
             className="hidden sm:inline-flex items-center justify-center"
             style={{
               minHeight: 40,

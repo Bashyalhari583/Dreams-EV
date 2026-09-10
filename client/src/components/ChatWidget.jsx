@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Trash2, Send } from "lucide-react";
+import { CONTACT } from "../config/contact";
 
 const QUICK_CHIPS = [
   { label: "⚡ EV Bikes", text: "What electric bikes do you have?" },
@@ -94,7 +95,7 @@ export default function ChatWidget() {
         ...prev,
         {
           role: "bot",
-          text: "Connection error. Please try again or call +977-9763610526.",
+          text: `Connection error. Please try again or call ${CONTACT.phoneDisplay}.`,
         },
       ]);
     } finally {

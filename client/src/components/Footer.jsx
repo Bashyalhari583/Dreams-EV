@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { CONTACT, DISTRIBUTOR } from "../config/contact";
 
 const SOCIALS = [
   {
@@ -34,7 +35,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a] border-t border-white/5 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
@@ -136,17 +137,16 @@ export default function Footer() {
               Tokha-2, Kathmandu, Nepal
             </p>
             <a
-              href="tel:+9779763610526"
+              href={`tel:${CONTACT.phoneTel}`}
               className="text-brand-cyan text-sm block mb-1 hover:underline"
             >
-              +977-9763610526
+              {CONTACT.phoneDisplay}
             </a>
             <a
-              href="mailto:micheautonepal@gmail.com
-"
+              href={`mailto:${CONTACT.email}`}
               className="text-brand-cyan text-sm block hover:underline"
             >
-              micheautonepal@gmail.com
+              {CONTACT.email}
             </a>
 
             {/* Social Icons */}
@@ -185,6 +185,33 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* National Distributor */}
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-4">
+              {DISTRIBUTOR.badge}
+            </h3>
+            <p className="text-white/40 text-xs uppercase tracking-wide mb-1">
+              {DISTRIBUTOR.name}
+            </p>
+            {DISTRIBUTOR.offices.map((o) => (
+              <p key={o.label} className="text-white/40 text-sm mb-2">
+                <span className="text-white/60">{o.label}:</span> {o.address}
+              </p>
+            ))}
+            <a
+              href={`tel:${DISTRIBUTOR.phoneTel}`}
+              className="text-brand-cyan text-sm block mb-1 hover:underline"
+            >
+              {DISTRIBUTOR.phoneDisplay}
+            </a>
+            <a
+              href={`mailto:${DISTRIBUTOR.email}`}
+              className="text-brand-cyan text-sm block hover:underline"
+            >
+              {DISTRIBUTOR.email}
+            </a>
           </div>
 
           {/* Newsletter */}

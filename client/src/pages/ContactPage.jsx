@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CONTACT } from "../config/contact";
 
 const INITIAL = {
   name: "",
@@ -36,7 +37,8 @@ export default function ContactPage() {
       setForm(INITIAL);
     } catch (err) {
       setStatus(
-        err.message || "Something went wrong. Please call +977-9763610526.",
+        err.message ||
+          `Something went wrong. Please call ${CONTACT.phoneDisplay}.`,
       );
     } finally {
       setSubmitting(false);
@@ -98,16 +100,16 @@ export default function ContactPage() {
               Tokha-2, Kathmandu, Nepal
             </p>
             <a
-              href="tel:+9779763610526"
+              href={`tel:${CONTACT.phoneTel}`}
               className="text-brand-cyan text-sm block mb-1 hover:underline"
             >
-              +977-9763610526
+              {CONTACT.phoneDisplay}
             </a>
             <a
-              href="mailto:micheautonepal@gmail.com"
+              href={`mailto:${CONTACT.email}`}
               className="text-brand-cyan text-sm block mb-3 hover:underline"
             >
-              micheautonepal@gmail.com
+              {CONTACT.email}
             </a>
             <span className="text-white/40 text-xs block mb-5">
               Sunday - Friday 9:00-18:00

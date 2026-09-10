@@ -1,32 +1,68 @@
 import { useState } from "react";
+import { BRANCHES as DEALERS } from "../config/contact";
 
-const DEALERS = [
-  {
-    name: "MiChe Auto Nepal Pvt. Ltd.",
-    badge: "Assembly Plant",
-    address: "Tokha-2, Kathmandu, Nepal",
-    phone: "+977-9763610526",
-    email: "micheautonepal@gmail.com",
-    hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
-    showEmail: true,
-  },
-  {
-    name: "Kupondole Branch",
-    badge: "Dealer",
-    address: "Kupondole, Lalitpur, Nepal",
-    phone: "+977-9765015555",
-    hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
-    showEmail: false,
-  },
-  {
-    name: "Maitidevi Branch",
-    badge: "Dealer",
-    address: "Maitidevi, Kathmandu, Nepal",
-    phone: "+977-9708553077",
-    hours: "Sunday - Friday, 9:00 AM - 6:00 PM",
-    showEmail: false,
-  },
-];
+const PRIMARY = DEALERS.filter((d) => d.badge !== "Dealer");
+const DEALER_BRANCHES = DEALERS.filter((d) => d.badge === "Dealer");
+
+function DealerCard({ d }) {
+  return (
+    <article
+      className="glass p-6"
+      style={{ borderLeft: "3px solid rgba(25,215,255,.3)" }}
+    >
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <h2 className="font-display font-bold text-base leading-tight">
+          {d.name}
+        </h2>
+        <span
+          style={{
+            flexShrink: 0,
+            fontSize: ".58rem",
+            padding: "2px 8px",
+            borderRadius: 999,
+            background: "rgba(25,215,255,.12)",
+            color: "#19d7ff",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: ".07em",
+            marginTop: 2,
+          }}
+        >
+          {d.badge}
+        </span>
+      </div>
+      {d.officeLines ? (
+        <div className="mb-3">
+          {d.officeLines.map((o) => (
+            <p key={o.label} className="text-white/50 text-sm mb-1">
+              <span className="text-white/70 font-semibold">{o.label}:</span>{" "}
+              {o.address}
+            </p>
+          ))}
+        </div>
+      ) : (
+        <p className="text-white/50 text-sm mb-3">{d.address}</p>
+      )}
+      <a
+        href={`tel:${d.phone.replace(/[^+\d]/g, "")}`}
+        className="text-brand-cyan text-sm block mb-1 hover:underline"
+      >
+        📞 {d.phone}
+      </a>
+      {d.showEmail && (
+        <a
+          href={`mailto:${d.email}`}
+          className="text-brand-cyan text-sm block mb-2 hover:underline"
+        >
+          ✉️ {d.email}
+        </a>
+      )}
+      {d.hours && (
+        <span className="text-white/40 text-xs">🕐 {d.hours}</span>
+      )}
+    </article>
+  );
+}
 
 export default function DealersPage() {
   const [form, setForm] = useState({
@@ -58,56 +94,21 @@ export default function DealersPage() {
       </div>
 
       <div className="section-container">
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Dealer Cards */}
-          <div className="space-y-5">
-            {DEALERS.map((d) => (
-              <article
-                key={d.name}
-                className="glass p-6"
-                style={{ borderLeft: "3px solid rgba(25,215,255,.3)" }}
-              >
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <h2 className="font-display font-bold text-base leading-tight">
-                    {d.name}
-                  </h2>
-                  <span
-                    style={{
-                      flexShrink: 0,
-                      fontSize: ".58rem",
-                      padding: "2px 8px",
-                      borderRadius: 999,
-                      background: "rgba(25,215,255,.12)",
-                      color: "#19d7ff",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: ".07em",
-                      marginTop: 2,
-                    }}
-                  >
-                    {d.badge}
-                  </span>
-                </div>
-                <p className="text-white/50 text-sm mb-3">{d.address}</p>
-                <a
-                  href={`tel:${d.phone.replace(/[^+\d]/g, "")}`}
-                  className="text-brand-cyan text-sm block mb-1 hover:underline"
-                >
-                  📞 {d.phone}
-                </a>
-                {d.showEmail && (
-                  <a
-                    href={`mailto:${d.email}`}
-                    className="text-brand-cyan text-sm block mb-2 hover:underline"
-                  >
-                    ✉️ {d.email}
-                  </a>
-                )}
-                <span className="text-white/40 text-xs">🕐 {d.hours}</span>
-              </article>
-            ))}
-          </div>
+        {/* Assembly Plant + National Distributor */}
+        <div className="grid sm:grid-cols-2 gap-5 mb-5">
+          {PRIMARY.map((d) => (
+            <DealerCard key={d.name} d={d} />
+          ))}
+        </div>
 
+        {/* Dealer Branches */}
+        <div className="grid sm:grid-cols-2 gap-5 mb-8">
+          {DEALER_BRANCHES.map((d) => (
+            <DealerCard key={d.name} d={d} />
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Service Booking Form */}
           <div className="glass p-6">
             <h2 className="font-display font-bold text-lg mb-4">
@@ -166,11 +167,11 @@ export default function DealersPage() {
                   <option value="" className="text-black">
                     Select branch
                   </option>
-                  <option className="text-black">
-                    MiChe Auto Nepal — Assembly Plant (Tokha)
-                  </option>
-                  <option className="text-black">Kupandol Branch</option>
-                  <option className="text-black">Maitidevi Branch</option>
+                  {DEALERS.map((d) => (
+                    <option key={d.name} className="text-black" value={d.name}>
+                      {d.name} — {d.badge}
+                    </option>
+                  ))}
                 </select>
                 <textarea
                   rows={4}
