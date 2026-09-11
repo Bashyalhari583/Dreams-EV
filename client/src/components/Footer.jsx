@@ -200,6 +200,9 @@ export default function Footer() {
                 <span className="text-white/60">{o.label}:</span> {o.address}
               </p>
             ))}
+            <p className="text-white/50 text-xs uppercase tracking-wide mb-1">
+              For Dealership
+            </p>
             <a
               href={`tel:${DISTRIBUTOR.phoneTel}`}
               className="text-brand-cyan text-sm block mb-1 hover:underline"
