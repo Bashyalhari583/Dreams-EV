@@ -5,3 +5,6 @@ dist/
 .DS_Store
 server/.env
 client/.env
+
+# Claude session preview/output files — never needed for deploy
+Claude outputs/

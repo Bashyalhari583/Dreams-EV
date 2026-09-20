@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BRANCHES as DEALERS } from "../config/contact";
+import { BRANCHES as DEALERS, DEALER_WANTED, DISTRIBUTOR } from "../config/contact";
 
 const PRIMARY = DEALERS.filter((d) => d.badge !== "Dealer");
 const DEALER_BRANCHES = DEALERS.filter((d) => d.badge === "Dealer");
@@ -106,6 +106,89 @@ export default function DealersPage() {
           {DEALER_BRANCHES.map((d) => (
             <DealerCard key={d.name} d={d} />
           ))}
+        </div>
+
+        {/* Dealer Wanted */}
+        <div className="glass p-6 md:p-8 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+            <div>
+              <p className="eyebrow">Authorised distributor of MiChe Auto</p>
+              <h2 className="font-display font-bold text-2xl md:text-3xl">
+                Dealer Wanted
+              </h2>
+              <p className="text-white/50 text-sm mt-1">{DISTRIBUTOR.name}</p>
+            </div>
+            <p className="text-white/50 text-sm">
+              For dealership enquiries, contact/DM us today
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h3 className="text-white/70 text-xs uppercase tracking-wide font-semibold mb-3">
+                Inside Valley
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {DEALER_WANTED.insideValley.map((city) => (
+                  <span
+                    key={city}
+                    style={{
+                      fontSize: ".72rem",
+                      padding: "4px 12px",
+                      borderRadius: 999,
+                      background: "rgba(25,215,255,.1)",
+                      border: "1px solid rgba(25,215,255,.25)",
+                      color: "#19d7ff",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {city}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-white/70 text-xs uppercase tracking-wide font-semibold mb-3">
+                Outside Valley
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {DEALER_WANTED.outsideValley.map((city) => (
+                  <span
+                    key={city}
+                    style={{
+                      fontSize: ".72rem",
+                      padding: "4px 12px",
+                      borderRadius: 999,
+                      background: "rgba(255,255,255,.06)",
+                      border: "1px solid rgba(255,255,255,.14)",
+                      color: "rgba(255,255,255,.7)",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {city}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="flex flex-wrap gap-x-6 gap-y-2 pt-5"
+            style={{ borderTop: "1px solid rgba(255,255,255,.08)" }}
+          >
+            <a
+              href={`tel:${DISTRIBUTOR.phoneTel}`}
+              className="text-brand-cyan text-sm hover:underline"
+            >
+              📞 {DISTRIBUTOR.phoneDisplay}
+            </a>
+            <a
+              href={`mailto:${DISTRIBUTOR.email}`}
+              className="text-brand-cyan text-sm hover:underline"
+            >
+              ✉️ {DISTRIBUTOR.email}
+            </a>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">

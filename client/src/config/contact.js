@@ -27,6 +27,24 @@ export const DISTRIBUTOR = {
   email: "gmcmotors17@gmail.com",
 };
 
+// Dealer-wanted recruitment call — cities MiChe Auto / GMC Motors is looking for dealers in.
+export const DEALER_WANTED = {
+  insideValley: ["Kathmandu", "Bhaktapur", "Lalitpur"],
+  outsideValley: [
+    "Chitwan",
+    "Hetauda",
+    "Surkhet",
+    "Butwal",
+    "Itahari",
+    "Tikapur",
+    "Dhangadhi",
+    "Pokhara",
+    "Biratnagar",
+    "Birgunj",
+    "Nepalgunj",
+  ],
+};
+
 export const BRANCHES = [
   {
     name: "MiChe Auto Nepal Pvt. Ltd.",
