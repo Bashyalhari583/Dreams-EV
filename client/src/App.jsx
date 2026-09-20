@@ -3,6 +3,7 @@ import { useState, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ChatWidget from "./components/ChatWidget";
+import DealerWantedPopup from "./components/DealerWantedPopup";
 import SearchOverlay from "./components/SearchOverlay";
 import ScrollToTop from "./components/ScrollToTop";
 import { CONTACT } from "./config/contact";
@@ -75,6 +76,7 @@ export default function App() {
 
       <Footer />
       <ChatWidget />
+      <DealerWantedPopup />
 
       {/* WhatsApp & Call FABs */}
       <a
